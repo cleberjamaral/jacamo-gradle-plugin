@@ -1,0 +1,29 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group = 'org.jacamo'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+}
+
+gradlePlugin {
+    plugins {
+        fileDiff {
+            id = 'org.jacamo.jacamo-gradle'
+            implementationClass = 'org.jacamo.plugins.jacamo.JacamoPlugin'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
